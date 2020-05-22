@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://myklienshf.cognitiveservices.azure.com/face/v1.0/",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}

@@ -1,0 +1,44 @@
+<div class="face-tile">
+  <mat-card class="face-card">
+    <mat-card-content>
+      <div>
+        <div *ngIf="isNotLoaded" class="spinner">
+          <mat-progress-spinner
+            color="accent"
+            mode="indeterminate"
+          ></mat-progress-spinner>
+        </div>
+        <div>
+          <video #video class="vid" autoplay></video>
+        </div>
+        <div>
+          <canvas hidden #canvas class="vid"></canvas>
+        </div>
+      </div>
+      <div *ngIf="face && !error; else errorMessage">
+        <app-face-details [face]="face"></app-face-details>
+      </div>
+      <ng-template #errorMessage
+        ><div class="error">{{ error }}</div></ng-template
+      >
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        *ngIf="!isCaptured"
+        mat-raised-button
+        color="primary"
+        (click)="capture()"
+      >
+        CAPTURE
+      </button>
+      <button
+        class="delete"
+        mat-raised-button
+        color="warn"
+        (click)="removeSelf()"
+      >
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

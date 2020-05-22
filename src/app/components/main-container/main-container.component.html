@@ -1,0 +1,46 @@
+<div class="main-container">
+  <div class="buttons">
+    <button
+      [disabled]="isBothAdded"
+      class="upload-another"
+      mat-raised-button
+      color="primary"
+      (click)="addCaptureComponent()"
+    >
+      Take second picture
+    </button>
+    <span
+      ><input
+        type="file"
+        accept="image/*"
+        hidden
+        #file
+        (change)="handleFileInput($event)"
+      /><button
+        [disabled]="isBothAdded"
+        class="upload"
+        mat-raised-button
+        color="secondary"
+        (click)="file.click()"
+      >
+        Upload second picture
+      </button></span
+    >
+  </div>
+  <div class="result" *ngIf="comparation && this.faces.size == 2">
+    <span
+      >I'm {{ confidence }}% sure, that these two people are
+      {{ comparation }}!</span
+    >
+  </div>
+  <div class="grid">
+    <mat-grid-list [cols]="colNum" rowHeight="800px">
+      <mat-grid-tile [colspan]="colSize" [rowspan]="1">
+        <ng-template appFirstImage></ng-template>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="colSize" [rowspan]="1">
+        <ng-template appSecondImage></ng-template>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

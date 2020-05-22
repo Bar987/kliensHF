@@ -1,0 +1,36 @@
+<div class="home">
+  <div>
+    <div>
+      <h1>Take or upload a picture to get started!</h1>
+    </div>
+    <span>
+      <span
+        ><button
+          class="upload"
+          mat-raised-button
+          color="primary"
+          routerLink="/detect"
+          [queryParams]="{ type: 'capture' }"
+        >
+          Take picture
+        </button></span
+      >
+      <span
+        ><input
+          type="file"
+          accept="image/*"
+          hidden
+          #file
+          (change)="handleFileInput($event)"
+        /><button
+          class="upload"
+          mat-raised-button
+          color="secondary"
+          (click)="file.click()"
+        >
+          Upload picture
+        </button></span
+      >
+    </span>
+  </div>
+</div>
